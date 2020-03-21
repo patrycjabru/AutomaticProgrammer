@@ -6,6 +6,7 @@ class ConditionalBlock:
     isAll: False
     colorNumber: None
     operation: ProgramBlocks
+    value = 9
 
     def __init__(self, isNone, isAll, colorNumber, operation):
         self.isNone = isNone
