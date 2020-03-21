@@ -75,7 +75,9 @@ class GameOperations:
         while self.program.commandIndex < self.program.maxCurrentSubProgramLength() and not self.checkVictory():
             command = self.program.getCurrentCommand()
             self.runCommand(command)
-            if command != ProgramBlocks.SUB_PROGRAM_1 and command != ProgramBlocks.SUB_PROGRAM_2:
+            if command.value not in \
+                    [ProgramBlocks.SUB_PROGRAM_1.value, ProgramBlocks.SUB_PROGRAM_2.value,
+                     ProgramBlocks.SUB_PROGRAM_3.value,ProgramBlocks.SUB_PROGRAM_4.value]:
                 self.program.commandIndex = self.program.commandIndex+1
 
     def runCommand(self, command):
