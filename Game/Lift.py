@@ -3,5 +3,5 @@ class Lift:
     liftedBlock: int
 
     def __init__(self):
-        self.position = 0
+        self.position = 1
         self.liftedBlock = 0

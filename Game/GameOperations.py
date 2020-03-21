@@ -72,10 +72,11 @@ class GameOperations:
             self.program.commandIndex = 0
 
     def runProgram(self):
-        while self.program.commandIndex < self.program.maxCurrentSubProgramLength():
+        while self.program.commandIndex < self.program.maxCurrentSubProgramLength() and not self.checkVictory():
             command = self.program.getCurrentCommand()
             self.runCommand(command)
-            self.program.commandIndex = self.program.commandIndex+1
+            if command != ProgramBlocks.SUB_PROGRAM_1 and command != ProgramBlocks.SUB_PROGRAM_2:
+                self.program.commandIndex = self.program.commandIndex+1
 
     def runCommand(self, command):
         if command == ProgramBlocks.ARROW_DOWN:

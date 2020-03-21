@@ -1,15 +1,13 @@
+import json
 class Board:
     boardState: []
 
     def __init__(self):
         self.boardState = []
 
-    def readStateFromFile(self, path):
+    def readStateFromFile(self, path,state_to_read):
         with open(path, 'r') as f:
-            lines = f.readlines()
-            for i in lines:
-                rowAsChars = (i.split(','))
-                rowAsInts = []
-                for r in rowAsChars:
-                    rowAsInts.append(int(r))
-                self.boardState.append(rowAsInts)
+            json_board = json.load(f)
+            string_state = json_board[state_to_read]
+            self.boardState = [[int(r) for r in i.split(',')]for i in string_state.split("|")]
+        # TODO: lift init position from file
