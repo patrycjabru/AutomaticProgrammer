@@ -12,9 +12,9 @@ class GameOperations:
     isGameOver: bool
     program: Program
 
-    def __init__(self, initialBoard, finalBoard, program):
+    def __init__(self, initialBoard, finalBoard, program, lift):
         self.isGameOver = False
-        self.lift = Lift.Lift()
+        self.lift = lift
         self.board = initialBoard
         self.finalBoard = finalBoard
         self.program = program
