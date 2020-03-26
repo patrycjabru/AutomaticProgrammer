@@ -5,7 +5,7 @@ from ProgramBlocks import ProgramBlocks
 from Game.ConditionalBlock import ConditionalBlock
 from Lift import Lift
 
-path = "GameStates/1.json"
+path = "GameStates/2.json"
 initialBoard = Board.Board(path, "init")
 
 finalBoard = Board.Board(path, "end")
@@ -15,14 +15,13 @@ game = GameOperations(initialBoard, finalBoard, program,lift)
 
 
 cond = ConditionalBlock(False, False, 1, ProgramBlocks.ARROW_RIGHT)
-program.subProgram1 = \
-    [ProgramBlocks.ARROW_RIGHT, ProgramBlocks.ARROW_RIGHT, ProgramBlocks.ARROW_DOWN, cond, ProgramBlocks.ARROW_DOWN]
-# program.subProgram1 = [ProgramBlocks.ARROW_DOWN,ProgramBlocks.ARROW_RIGHT,ProgramBlocks.ARROW_DOWN,ProgramBlocks.ARROW_LEFT,ProgramBlocks.SUB_PROGRAM_2]
-# program.subProgram2 = [ProgramBlocks.ARROW_DOWN,ProgramBlocks.ARROW_LEFT,ProgramBlocks.ARROW_DOWN,ProgramBlocks.ARROW_RIGHT,ProgramBlocks.SUB_PROGRAM_1]
-game.runProgram()
-
+#program.subProgram1 = \
+#    [ProgramBlocks.ARROW_RIGHT, ProgramBlocks.ARROW_RIGHT, ProgramBlocks.ARROW_DOWN, cond, ProgramBlocks.ARROW_DOWN]
+program.subProgram1 = [ProgramBlocks.ARROW_DOWN,ProgramBlocks.ARROW_RIGHT,ProgramBlocks.ARROW_DOWN,ProgramBlocks.ARROW_LEFT,ProgramBlocks.SUB_PROGRAM_2]
+program.subProgram2 = [ProgramBlocks.ARROW_DOWN,ProgramBlocks.ARROW_LEFT,ProgramBlocks.ARROW_DOWN,ProgramBlocks.ARROW_RIGHT,ProgramBlocks.SUB_PROGRAM_1]
 print(game.board.boardState)
-print(game.checkVictory())
+game.runProgram()
+print("Victory" if game.checkVictory() else "Defeat")
 print(game.finalBoard.boardState)
 
 
