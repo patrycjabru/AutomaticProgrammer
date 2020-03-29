@@ -129,7 +129,7 @@ def int_flip_per_ind(ind):
 def subtree(ind):
     """
     Mutate the individual by replacing a randomly selected subtree with a
-    new randomly generated subtree. Guaranteed one event per individual, unless
+    new randomly Generated subtree. Guaranteed one event per individual, unless
     params['MUTATION_EVENTS'] is specified as a higher number.
 
     :param ind: An individual to be mutated.

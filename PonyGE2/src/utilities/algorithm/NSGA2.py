@@ -150,7 +150,7 @@ def compare_fitnesses(ind1_value, ind2_value, ff):
 
     :param ind1_value: The fitness of ind1.
     :param ind2_value: The fitness of ind2.
-    :param ff: The fitness function that generated the above values.
+    :param ff: The fitness function that Generated the above values.
     :return: Whether or not ind1_value is better than ind2_value.
     """
 

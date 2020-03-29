@@ -11,7 +11,7 @@ def replacement(new_pop, old_pop):
     Given a new population and an old population, performs replacement using
     specified replacement operator.
     
-    :param new_pop: Newly generated population (after selection, variation &
+    :param new_pop: Newly Generated population (after selection, variation &
     evaluation).
     :param old_pop: The previous generation population.
     :return: Replaced population.

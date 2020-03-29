@@ -36,7 +36,7 @@ def parse_terminals(target):
     # value is the subtree itself.
     trackers.snippets = {}
 
-    # Initialise dict for deleted snippets, to ensure they aren't generated
+    # Initialise dict for deleted snippets, to ensure they aren't Generated
     # again.
     trackers.deleted_snippets = []
 

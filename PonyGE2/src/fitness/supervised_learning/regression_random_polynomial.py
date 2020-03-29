@@ -13,8 +13,8 @@ class regression_random_polynomial(regression):
 
     The user must pass in the degree, n_vars, and n_samples. A random
     polynomial of the given degree and number of variables is
-    generated (ie random coefficients are generated). It is evaluated
-    at n_samples, randomly generated. That gives a target dataset for
+    Generated (ie random coefficients are Generated). It is evaluated
+    at n_samples, randomly Generated. That gives a target dataset for
     training. This is accomplished with, eg, --extra_parameters 5 1
     20, giving degree 5, 1 variable, 20 fitness cases.
 

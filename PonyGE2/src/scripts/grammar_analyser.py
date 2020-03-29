@@ -71,7 +71,7 @@ def main(command_line_args):
         # Increment total number of solutions.
         total_solutions += solutions
     
-    print("\nTotal number of unique possible solutions that can be generated"
+    print("\nTotal number of unique possible solutions that can be Generated"
           "up to and including a depth of %d: %s" %
           (depth, sci_notation(total_solutions)))
         

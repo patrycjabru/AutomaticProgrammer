@@ -230,7 +230,7 @@ def save_average_plot_across_runs(filename):
         run0_gen(n-1)   run1_gen(n-1)   .   .   .   run(n-1)_gen(n-1)
         run0_gen(n)     run1_gen(n)     .   .   .   run(n-1)_gen(n)
 
-    The required file can be generated using
+    The required file can be Generated using
 
         stats.parse_stats.parse_stats_from_runs()
 
