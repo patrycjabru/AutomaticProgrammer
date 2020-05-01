@@ -11,6 +11,8 @@ class GameOperations:
     finalBoard: Board
     isGameOver: bool
     program: Program
+    moves: int
+    max_moves = int
 
     def __init__(self, initialBoard, finalBoard, program, lift):
         self.isGameOver = False
@@ -18,6 +20,8 @@ class GameOperations:
         self.board = initialBoard
         self.finalBoard = finalBoard
         self.program = program
+        self.moves = 0
+        self.max_moves = 1000
 
     def arrowDown(self):
         if self.lift.liftedBlock == 0:
@@ -29,7 +33,8 @@ class GameOperations:
         numberOfRows = len(self.board.boardState)
         for i in range(numberOfRows):
             if self.board.boardState[i][self.lift.position] != 0:
-                self.lift.liftedBlock = self.board.boardState[i][self.lift.position]
+                self.lift.liftedBlock = self.board.boardState[i][
+                    self.lift.position]
                 self.board.boardState[i][self.lift.position] = 0
                 break
 
@@ -38,13 +43,15 @@ class GameOperations:
         for i in range(numberOfRows):
             if self.board.boardState[i][self.lift.position] != 0:
                 if i - 1 >= 0:
-                    self.board.boardState[i - 1][self.lift.position] = self.lift.liftedBlock
+                    self.board.boardState[i - 1][
+                        self.lift.position] = self.lift.liftedBlock
                     self.lift.liftedBlock = 0
                     return
                 else:
                     self.isGameOver = True
                     return
-        self.board.boardState[numberOfRows - 1][self.lift.position] = self.lift.liftedBlock
+        self.board.boardState[numberOfRows - 1][
+            self.lift.position] = self.lift.liftedBlock
         self.lift.liftedBlock = 0
 
     def rightArrow(self):
@@ -73,13 +80,16 @@ class GameOperations:
 
     def runProgram(self):
         while self.program.commandIndex < self.program.maxCurrentSubProgramLength() \
-                and not self.checkVictory() and not self.isGameOver:
+                and not self.checkVictory() and not self.isGameOver and self.moves < self.max_moves:
+            self.moves += 1
             command = self.program.getCurrentCommand()
             self.runCommand(command)
             if command.value not in \
-                    [ProgramBlocks.SUB_PROGRAM_1.value, ProgramBlocks.SUB_PROGRAM_2.value,
-                     ProgramBlocks.SUB_PROGRAM_3.value,ProgramBlocks.SUB_PROGRAM_4.value]:
-                self.program.commandIndex = self.program.commandIndex+1
+                    [ProgramBlocks.SUB_PROGRAM_1.value,
+                     ProgramBlocks.SUB_PROGRAM_2.value,
+                     ProgramBlocks.SUB_PROGRAM_3.value,
+                     ProgramBlocks.SUB_PROGRAM_4.value]:
+                self.program.commandIndex = self.program.commandIndex + 1
 
     def runCommand(self, command):
         if command == ProgramBlocks.ARROW_DOWN:
