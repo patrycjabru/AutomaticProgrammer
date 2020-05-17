@@ -10,18 +10,20 @@ class GameOperations:
     board: Board
     finalBoard: Board
     isGameOver: bool
+    outOfBoard: bool
     program: Program
     moves: int
-    max_moves = int
+    max_moves: int
 
     def __init__(self, initialBoard, finalBoard, program, lift):
         self.isGameOver = False
+        self.outOfBoard = False
         self.lift = lift
         self.board = initialBoard
         self.finalBoard = finalBoard
         self.program = program
         self.moves = 0
-        self.max_moves = 1000
+        self.max_moves = 500
 
     def arrowDown(self):
         if self.lift.liftedBlock == 0:
@@ -58,12 +60,14 @@ class GameOperations:
         numberOfColumns = len(self.board.boardState[0])
         if self.lift.position + 1 == numberOfColumns:
             self.isGameOver = True
+            self.outOfBoard = True
             return
         self.lift.position = self.lift.position + 1
 
     def leftArrow(self):
         if self.lift.position - 1 < 0:
             self.isGameOver = True
+            self.outOfBoard = True
             return
         self.lift.position = self.lift.position - 1
 
