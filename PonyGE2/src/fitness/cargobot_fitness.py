@@ -50,21 +50,23 @@ class cargobot_fitness(base_ff):
         return 100
 
     def evaluate(self, ind, **kwargs):
+        fitness = 0
         guess = ind.phenotype
         compiler = Compiler()
         print(guess)
         if guess.count("down_arrow")<2:
-            return 10000
+            fitness += 10000
         if len(guess.split()) < 14:
-            print(1000)
-            return 1000
+            fitness += 1000
         program = compiler.compile(guess)
         initial_board = Board(self.path, "init")
         final_board = Board(self.path, "end")
         lift = Lift(self.path)
         game = GameOperations(initial_board, final_board, program, lift)
         game.runProgram()
-        fitness = 0 if game.checkVictory() else self.check_difference_with_neighborhood(
+        if game.outOfBoard:
+            fitness += 100000
+        fitness += 0 if game.checkVictory() else self.check_difference_with_neighborhood(
             game.finalBoard, game.board)
         print(fitness)
         return fitness
