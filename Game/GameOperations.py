@@ -14,6 +14,7 @@ class GameOperations:
     program: Program
     moves: int
     max_moves: int
+    changed_blocks: int
 
     def __init__(self, initialBoard, finalBoard, program, lift):
         self.isGameOver = False
@@ -24,12 +25,14 @@ class GameOperations:
         self.program = program
         self.moves = 0
         self.max_moves = 500
+        self.changed_blocks = 0
 
     def arrowDown(self):
         if self.lift.liftedBlock == 0:
             self.__liftBlock()
         else:
             self.__placeBlock()
+
 
     def __liftBlock(self):
         numberOfRows = len(self.board.boardState)
@@ -41,6 +44,8 @@ class GameOperations:
                 break
 
     def __placeBlock(self):
+        if self.lift.liftedBlock==0:
+            return
         numberOfRows = len(self.board.boardState)
         for i in range(numberOfRows):
             if self.board.boardState[i][self.lift.position] != 0:
@@ -48,6 +53,7 @@ class GameOperations:
                     self.board.boardState[i - 1][
                         self.lift.position] = self.lift.liftedBlock
                     self.lift.liftedBlock = 0
+                    self.changed_blocks += 1
                     return
                 else:
                     self.isGameOver = True

@@ -56,8 +56,9 @@ class cargobot_fitness(base_ff):
         print(guess)
         if guess.count("down_arrow")<2:
             fitness += 10000
-        if len(guess.split()) < 14:
-            fitness += 1000
+        if len(guess.split()) > 140:
+            print("so big")
+            return 10000
         program = compiler.compile(guess)
         initial_board = Board(self.path, "init")
         final_board = Board(self.path, "end")
@@ -68,5 +69,6 @@ class cargobot_fitness(base_ff):
             fitness += 100000
         fitness += 0 if game.checkVictory() else self.check_difference_with_neighborhood(
             game.finalBoard, game.board)
+        fitness -= game.changed_blocks*10 if fitness > 100 else 0
         print(fitness)
         return fitness
