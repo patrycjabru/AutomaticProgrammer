@@ -1,4 +1,9 @@
-<start> ::= <block> separator separator separator
-<block> ::= <block> <block> | <action>
-<action> ::=  down_arrow <move> down_arrow <move>
-<move>::= left_arrow | right_arrow
+<start> ::= <move> separator separator separator
+<move> ::=  <move_side_empty> down_arrow <move_side> down_arrow | <move> <move>
+<move_side_empty> ::= <move_left_empty> | <move_right_empty>
+<move_left_empty> ::= <move_left_empty> <move_left_empty> | left_arrow
+<move_right_empty> ::= <move_right_empty> <move_right_empty> | right_arrow
+<move_side> ::= <move_left> | <move_right>
+<move_left> ::= left_arrow
+<move_right> ::= right_arrow
+
