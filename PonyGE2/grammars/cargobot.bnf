@@ -1,9 +1,9 @@
-<start> ::= <block> <section> <section> <section>
-<section> ::= <separator> <block> | <separator>
-<block> ::= <block> <block> | <action> | <conditional_statement>
-<conditional_statement> ::= <condition> <conditional_action>
-<conditional_action> ::= left_arrow | right_arrow | down_arrow | program1 | program2 | program3 | program4
-<action> ::= left_arrow | right_arrow | down_arrow | program1 | program2 | program3 | program4
-<condition> ::= all | empty | color1 | color2 | color3 | color4
-<separator> ::= separator
+<start> ::= <move> separator separator separator
+<move> ::=  <move_side_empty> down_arrow <move_side> down_arrow | <move> <move>
+<move_side_empty> ::= <move_left_empty> | <move_right_empty>
+<move_left_empty> ::= <move_left_empty> <move_left_empty> | left_arrow
+<move_right_empty> ::= <move_right_empty> <move_right_empty> | right_arrow
+<move_side> ::= <move_left> | <move_right>
+<move_left> ::= left_arrow
+<move_right> ::= right_arrow
 
