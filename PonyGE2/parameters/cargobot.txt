@@ -3,8 +3,8 @@ CODON_SIZE:             100000
 CROSSOVER:              variable_onepoint
 CROSSOVER_PROBABILITY:  0.75
 DEBUG:                  False
-GENERATIONS:            500
-MAX_GENOME_LENGTH:      5000
+GENERATIONS:            20
+MAX_GENOME_LENGTH:      500
 GRAMMAR_FILE:           cargobot.bnf
 INITIALISATION:         PI_grow
 INVALID_SELECTION:      False
@@ -16,6 +16,6 @@ POPULATION_SIZE:        500
 FITNESS_FUNCTION:       cargobot_fitness
 REPLACEMENT:            generational
 SELECTION:              tournament
-GAME_BOARD:             ../../GameStates/2.json
+GAME_BOARD:             ../../GameStates/3.json
 TOURNAMENT_SIZE:        2
-VERBOSE:                False
+VERBOSE:               False

@@ -7,6 +7,10 @@ class Program:
     executionSubProgramNumber = 1
     commandIndex = 0
 
+    def __repr__(self):
+        return str(self.subProgram1) + " " + str(self.subProgram2) + " " +\
+               str(self.subProgram3) + " " + str(self.subProgram4) + " "
+
     def maxCurrentSubProgramLength(self):
         if self.executionSubProgramNumber == 1:
             return len(self.subProgram1)

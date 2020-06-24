@@ -65,7 +65,6 @@ class GameOperations:
     def rightArrow(self):
         numberOfColumns = len(self.board.boardState[0])
         if self.lift.position + 1 == numberOfColumns:
-            self.isGameOver = True
             self.lift.position = 0
             return
         self.lift.position = self.lift.position + 1
@@ -73,7 +72,6 @@ class GameOperations:
     def leftArrow(self):
         numberOfColumns = len(self.board.boardState[0])
         if self.lift.position - 1 < 0:
-            self.isGameOver = True
             self.lift.position = numberOfColumns - 1
             return
         self.lift.position = self.lift.position - 1
