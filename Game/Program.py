@@ -1,11 +1,13 @@
 class Program:
-    subProgram1 = []
-    subProgram2 = []
-    subProgram3 = []
-    subProgram4 = []
 
-    executionSubProgramNumber = 1
-    commandIndex = 0
+    def __init__(self):
+        self.subProgram1 = []
+        self.subProgram2 = []
+        self.subProgram3 = []
+        self.subProgram4 = []
+
+        self.executionSubProgramNumber = 1
+        self.commandIndex = 0
 
     def __repr__(self):
         return str(self.subProgram1) + " " + str(self.subProgram2) + " " +\

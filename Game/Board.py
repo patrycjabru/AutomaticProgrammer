@@ -2,7 +2,7 @@ import json
 
 
 class Board:
-    boardState: []
+    boardState: list
 
     def __init__(self, path, state_to_read):
         self.boardState = self.readStateFromFile(path, state_to_read)
