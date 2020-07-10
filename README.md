@@ -13,7 +13,7 @@ Game consists of parts such as:
 - Functions which can execute code commands. 
 
 #### Programs grammar
-Game input is a program given as a string in format which is acceptable by [grammar](https://github.com/patrycjabru/AutomaticProgrammer/GameInterpreter/cargobot.g4). Structure of a program consists of parts:
+Game input is a program given as a string in format which is acceptable by [grammar](https://github.com/patrycjabru/AutomaticProgrammer/blob/master/GameInterpreter/cargobot.g4). Structure of a program consists of parts:
 - separator - must occur 3 times, separates 4 subprograms
 - left_arrow - move lift by one column to the left
 - right_arrow - move lift by one column to the right
@@ -37,7 +37,7 @@ The aim of the game is to think of a program, which is able to transform initial
 Genetic algorithm used to solve this game comes from [PonyGE](https://github.com/PonyGE/PonyGE2) application. It is not a library, so it is not possible to import it. The project was cloned into PonyGE2 directory. 
 
 #### Grammar
-There are two types of grammar, which was tested with this algorithm - [full grammar](https://github.com/patrycjabru/AutomaticProgrammer/tree/master/PonyGE2/grammars/argobot2.bnf) including conditionals and subprograms, and [simple grammar]((https://github.com/patrycjabru/AutomaticProgrammer/tree/master/PonyGE2/grammars/argobot.bnf)) consisting only of one subprogram and arrows. 
+There are two types of grammar, which was tested with this algorithm - [full grammar](https://github.com/patrycjabru/AutomaticProgrammer/blob/master/PonyGE2/grammars/cargobot2.bnf) including conditionals and subprograms, and [simple grammar](https://github.com/patrycjabru/AutomaticProgrammer/blob/master/PonyGE2/grammars/cargobot.bnf) consisting only of one subprogram and arrows. 
 
 #### Fitness function
 [Fitness function](https://github.com/patrycjabru/AutomaticProgrammer/blob/master/PonyGE2/src/fitness/cargobot_fitness.py) is a function, which calculates how good generated solution is. If the value is low, it means that the solution is good and should be evolved. High value means that the generated solution is not even close to correct solution. Value 0 is a success - generated program is able to transform initial state into final state. Value is calculated by checking position of each block. If block is on desired position or is close to it, then it means that fitness value is low. Also at the end there should be no block on a lift, so if there is one, then penalty points are added. 
