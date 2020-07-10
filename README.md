@@ -25,7 +25,7 @@ Game input is a program given as a string in format which is acceptable by [gram
 
 #### Execution of a program
 Program is executed using Antlr compiler. 
-![alt text](https://github.com/patrycjabru/AutomaticProgrammer/raw/master/ReadmeImages/Execution.png "Game compilation")
+![alt text](https://github.com/patrycjabru/AutomaticProgrammer/blob/master/ReadmeImages/Execution.PNG "Game compilation")
 
 #### Board structure
 For each game execution two game boards are needed - initial state and final state the player wants to achieve. They are stored as json files in directory *GameStates*. There are three fields in the file - initial (*init*) and final state (*end*) and also initial lift position (*liftPosition*). Board state is a two dimensional array written in one line with '|' as a row separator and ',' as a cell seperator.
