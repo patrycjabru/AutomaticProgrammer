@@ -54,5 +54,5 @@ Here are the example results. Simpler boards were better solved by simple gramma
 ![alt text](https://github.com/patrycjabru/AutomaticProgrammer/raw/master/ReadmeImages/Results2.png "Results 2")
 
 ## Authors
-@patrycjabru
-@hkolanska
+[@patrycjabru](https://github.com/patrycjabru)
+[@hkolanska](https://github.com/hkolanska)
