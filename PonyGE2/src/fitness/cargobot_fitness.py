@@ -38,6 +38,7 @@ class cargobot_fitness(base_ff):
                                           final.boardState)
         return score
 
+
     def neighborhood(self, x, y, state, final):
         if state == final[x][y]:
             return 0
@@ -54,24 +55,18 @@ class cargobot_fitness(base_ff):
         guess = ind.phenotype
         compiler = Compiler()
         print(guess)
-        if guess.count("down_arrow")<2:
-            fitness += 10000
-        if len(guess.split()) > 140:
-        #    print("so big")
-            return 10000
         program = compiler.compile(guess)
         initial_board = Board(self.path, "init")
         final_board = Board(self.path, "end")
         lift = Lift(self.path)
         game = GameOperations(initial_board, final_board, program, lift)
-        #print(game.board)
         game.runProgram()
         fitness += 0 if game.checkVictory() else self.check_difference_with_neighborhood(
             game.finalBoard, game.board)
-        #fitness -= game.changed_blocks*10 if fitness > 100 else 0
+        #fitness -= game.changed_blocks*10 if fitness > 15*game.changed_blocks else 0
         fitness += 20 if lift.liftedBlock != 0 else 0
-        #
-        # if fitness<40:
+
+        # if fitness<100:
         #     print(game.board)
-        #     print(fitness)
+        print(fitness)
         return fitness
