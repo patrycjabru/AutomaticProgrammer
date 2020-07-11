@@ -42,17 +42,17 @@ class MyFirstGUI:
         label_fi.pack(side="right")
 
         frame1 = tk.Frame(master=master, width=self.width,
-                          height=int(self.height / 2))
+                          height=self.height // 2)
         frame1.pack()
 
-        frame1_1 = tk.Frame(master=frame1, width=int(self.width / 2),
-                            height=int(self.height / 2))
+        frame1_1 = tk.Frame(master=frame1, width=self.width // 2,
+                            height=self.height // 2)
         frame1_1.pack(side="left")
 
         self.print_board(self.initial_board, frame1_1)
 
-        frame1_2 = tk.Frame(master=frame1, width=int(self.width / 2),
-                            height=int(self.height / 2))
+        frame1_2 = tk.Frame(master=frame1, width=self.width // 2,
+                            height=self.height // 2)
         frame1_2.pack(side="right")
         self.print_board(self.final_board, frame1_2)
 
@@ -63,11 +63,11 @@ class MyFirstGUI:
         label_in.pack(side="left")
 
         frame2 = tk.Frame(master=master, width=self.width,
-                          height=int(self.height / 2))
+                          height=self.height // 2)
         frame2.pack()
 
         self.frame2_1 = tk.Frame(master=frame2, width=int(self.width),
-                                 height=int(self.height / 2))
+                                 height=self.height // 2)
         self.frame2_1.pack(side="left")
 
         frame3 = tk.Frame(master=master, width=self.width, height=50)
@@ -93,35 +93,37 @@ class MyFirstGUI:
         if not frame:
             frame = self.frame2_1
         border = 6
-        game_board = (
-        int(self.width / 2) - border * 4, int(self.height / 2) - border * 4)
-        one_tile = (game_board[0] // (len(board.boardState[0])) - border,
-                    game_board[1] / (len(board.boardState)) + 1 - border)
+        game_board_shape = (
+            self.width // 2 - border * 4, self.height // 2 - border * 4)
+        one_disc_shape = (
+            game_board_shape[0] // (len(board.boardState[0])) - border,
+            game_board_shape[1] // (len(board.boardState)) + 1 - border)
 
         canvas = tk.Canvas(frame)
-        canvas.create_rectangle(border, border, game_board[0], game_board[1],
+        canvas.create_rectangle(border, border, game_board_shape[0],
+                                game_board_shape[1],
                                 outline="MistyRose3", fill="MistyRose3")
         for column in range(1, len(board.boardState[0]) + 1):
-            x = (column - 1) * one_tile[0] + one_tile[0] // 2
-            canvas.create_rectangle(x, self.height // 2 - border * 3, x + 3,
-                                    one_tile[1], fill="DarkOrange4")
+            rod_x = (column - 1) * one_disc_shape[0] + one_disc_shape[0] // 2
+            canvas.create_rectangle(rod_x, self.height // 2 - border * 3,
+                                    rod_x + 3,
+                                    one_disc_shape[1], fill="DarkOrange4")
         canvas.pack()
-        self.print_discks(board, canvas, one_tile)
+        self.print_discks(board, canvas, one_disc_shape)
         return
 
-    def print_discks(self, board, canvas, one_tile):
+    def print_discks(self, board, canvas, one_disc_shape):
         colors = {1: "DarkOliveGreen3", 2: "VioletRed2", 3: "DarkSlategray3",
                   4: "goldenrod1"}
         for row, i in enumerate(board.boardState):
             for column, j in enumerate(i):
                 if j == 0:
                     continue
-                x = column * one_tile[0] + (
-                            one_tile[0] - one_tile[0] // 1.4) // 2
-                y = (row + 1) * one_tile[1] - 3
-                print(column, row, x, y)
-                canvas.create_rectangle(x, y, x + one_tile[0] // 1.4,
-                                        y + one_tile[1],
+                x = column * one_disc_shape[0] + (
+                        one_disc_shape[0] - one_disc_shape[0] // 1.4) // 2
+                y = (row + 1) * one_disc_shape[1] - 3
+                canvas.create_rectangle(x, y, x + one_disc_shape[0] // 1.4,
+                                        y + one_disc_shape[1],
                                         outline="black", fill=colors[j])
         return
 
