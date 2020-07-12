@@ -1,19 +1,19 @@
 # Automatic Programmer
 ## What is it? 
-The goal of the project was to write a program, which is able to solve game Cargo Bot. The game is about moving blocks using simple programming language. Our application is using genetic algorithm to generate programs in this language. 
+The goal of the project was to write an application, which is able to automatically solve game [Cargo Bot](https://altermanchess.wixsite.com/cargobot). The game is about moving blocks using simple programming language. Our application is using genetic algorithm to generate programs in this language. 
 ## How it works?
 Project was implemented using Python. 
 ### Game implementation
-Game implementation is in a *Game* directory. Part of the code which is able to translate generated programs to game actions is in directory *Game Interpreter*. Interpreter was made using Antlr library. 
+Game implementation is in a *Game* directory. Part of the code which translates generated programs to game actions is in directory *Game Interpreter*. Interpreter was made using Antlr library. 
 
 Game consists of parts such as:
-- Representation of a initial, final and current game board;
+- Representation of an initial, final and current game board;
 - Lift, which moves blocks;
 - Program blocks - left arrow, right arrow, down arrow, conditional, subprogram;
 - Functions which can execute code commands. 
 
 #### Programs grammar
-Game input is a program given as a string in format which is acceptable by [grammar](https://github.com/patrycjabru/AutomaticProgrammer/blob/master/GameInterpreter/cargobot.g4). Structure of a program consists of parts:
+Game input is a program given as a string in format which is acceptable by game [grammar](https://github.com/patrycjabru/AutomaticProgrammer/blob/master/GameInterpreter/cargobot.g4). Structure of a program consists of parts:
 - separator - must occur 3 times, separates 4 subprograms
 - left_arrow - move lift by one column to the left
 - right_arrow - move lift by one column to the right
@@ -23,9 +23,9 @@ Game input is a program given as a string in format which is acceptable by [gram
 - all - conditional statement meaning if there is any block on a lift, then do the action; must be followed by action - left_arrow, right_arrow, down_arrow or programX
 - empty - conditional statement meaning if lift is empty, then do the action; must be followed by action - left_arrow, right_arrow, down_arrow or programX
 
-#### Execution of a program
+#### Execution of a game program
 Program is executed using Antlr compiler. 
-![alt text](https://github.com/patrycjabru/AutomaticProgrammer/blob/master/ReadmeImages/Execution.PNG "Game compilation")
+![alt text](https://github.com/patrycjabru/AutomaticProgrammer/blob/master/ReadmeImages/Execution.PNG "Game program execution")
 
 #### Board structure
 For each game execution two game boards are needed - initial state and final state the player wants to achieve. They are stored as json files in directory *GameStates*. There are three fields in the file - initial (*init*) and final state (*end*) and also initial lift position (*liftPosition*). Board state is a two dimensional array written in one line with '|' as a row separator and ',' as a cell seperator.
@@ -34,7 +34,7 @@ For each game execution two game boards are needed - initial state and final sta
 The aim of the game is to think of a program, which is able to transform initial state into final state. 
 
 ### Genetic algorithm
-Genetic algorithm used to solve this game comes from [PonyGE](https://github.com/PonyGE/PonyGE2) application. It is not a library, so it is not possible to import it. The project was cloned into PonyGE2 directory. 
+Genetic algorithm used to solve this game comes from [PonyGE](https://github.com/PonyGE/PonyGE2) project. It is not a library, so it is not possible to import it. The project was cloned into PonyGE2 directory. 
 
 #### Grammar
 There are two types of grammar, which was tested with this algorithm - [full grammar](https://github.com/patrycjabru/AutomaticProgrammer/blob/master/PonyGE2/grammars/cargobot_full.bnf) including conditionals and subprograms, and [simple grammar](https://github.com/patrycjabru/AutomaticProgrammer/blob/master/PonyGE2/grammars/cargobot_simple.bnf) consisting only of one subprogram and arrows. 
