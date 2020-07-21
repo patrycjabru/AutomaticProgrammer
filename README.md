@@ -1,4 +1,7 @@
 # Automatic Programmer
+## Abstract
+The aim of the project was to explore the topic of genetic algorithms and automatic programming. In order to do so, we made an application able to solve a CargoBot programming game using genetic algorithm. The game is about moving blocks from initial to final state using simple programming language. We recreated a game with interpreter in our project, so we could use it with genetic algorithm. To evolve grammar and generate programs we used a PonyGE project. As a result of our project we created an automatic programmer, which can play CargoBot game.
+
 ## What is it? 
 The goal of the project was to write an application, which is able to automatically solve game [Cargo Bot](https://altermanchess.wixsite.com/cargobot). The game is about moving blocks using simple programming language. Our application is using genetic algorithm to generate programs in this language. 
 ## How it works?
@@ -52,6 +55,19 @@ GUI was made using tkinter. The file consisting GUI code is in a file [gui.py](h
 Here are the example results. Simpler boards were better solved by simple grammar. More complicated ones gave better results for full grammar.  
 ![alt text](https://github.com/patrycjabru/AutomaticProgrammer/raw/master/ReadmeImages/Results1.png "Results 1")
 ![alt text](https://github.com/patrycjabru/AutomaticProgrammer/raw/master/ReadmeImages/Results2.png "Results 2")
+
+### What is done well?
+- Game implementation.
+- Input interpreter.
+- Genetic program can solve some boards.
+- Simple results presentation (GUI).
+
+### What should be improved?
+- Genetic program cannot solve some boards.
+- Grammar, parameters and fitness function probably can be better. 
+- In CargoBot subprograms have fixed length. This constraint was not implemented.
+- As a simplification there was removed a possibility of moving a lift out of board. Using left arrow when lift is in a first column, moves a lift to the last column. Analogically for the right arrow at the end.
+- GUI could be more complex. There should be more configuration option available. 
 
 ## Authors
 [@patrycjabru](https://github.com/patrycjabru)
